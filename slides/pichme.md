@@ -500,6 +500,74 @@ $ git commit -m "[update] prediction"
 
 ---
 
+# 1人でGit
+
+- 諸事情で、modelingの処理を追加したところまで戻りたくなった
+- 戻るための手順
+
+```
+0. git log でハッシュを確認
+1. git reset でもどる
+```
+
+---
+
+# 1人でGit
+
+```
+0. git log でハッシュを確認
+```
+
+以下のcommandでcommit(ある時点)のハッシュが得られる
+予測のなんかを加えたcommitのハッシュは`63671c0`
+モデリングのなんかを加えた時のハッシュは`fbcb81f`
+
+##### COMMAND
+
+```
+$ git log --oneline
+```
+
+## ![image](./assets/gitlog.png)
+
+---
+
+# 1人でGit
+
+```
+1. git reset でもどる
+```
+
+ハッシュを指定して戻る
+
+##### COMMAND
+
+```
+$ git reset --hard fbcb81f
+```
+
+## ![image](./assets/gitlog-after.png)
+
+---
+
+# 1人でGit
+
+```
+1. git reset でもどる
+```
+
+ハッシュを指定して戻る
+
+##### COMMAND
+
+```
+$ git reset --hard fbcb81f
+```
+## ![image  height:170px](./assets/gitlog-reset-result.png)
+
+---
+
+
 正直ここまでできれば、ローカルPCでバージョン管理はできてる
 
 → ここから、リモートリポジトリにコードを保存してみる
