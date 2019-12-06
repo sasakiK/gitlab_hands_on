@@ -111,10 +111,10 @@ footer: Git/Gitlab Hands-on
 ###### 3. 1人でコードを管理してみる
 - init → add → commit
 - プロジェクトをつくってみる
-- remoteにpushする
 - 一個前までもどしてみる
+- remoteにpushする
 
-###### 4. 2人でコードを管理してみる
+###### 4. 2人でコードを管理してみる(時間があれば)
 - プロジェクトを作ってmemberを加えてみる
 - siritori.txtを共同編集する
     
@@ -614,3 +614,5 @@ $ git reset --hard fbcb81f
 ---
 
 # 2人でGit
+
+- ここまでやるかは未定
