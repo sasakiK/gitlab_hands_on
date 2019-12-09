@@ -11,14 +11,13 @@ footer: Git/Gitlab Hands-on
 <style>
     @font-face
     {
-        font-family: banana;
-        src: url('./assets/bananaslip.otf')
+        font-family: monaco;
+        src: url('./assets/monaco.ttf')
     }
     section {
         background:#F5BF6A;
         color:#333333;
-        font-family: 'banana', 'Noto Sans CJK JP';
-        /* font-family: 'Monaco'; */
+        font-family: 'monaco' 'Monaco';
         justify-content: flex-start;
     }
     h1{
@@ -75,13 +74,12 @@ footer: Git/Gitlab Hands-on
 
 # Git/Gitlab Hands-on
 
-- 今日のゴール
-- Gitとは
-- Gitlabとは
+- 目標
+- Git、Gitlabとは
 - 1人でGit
-- 2人でGit
+- (2人でGit)
 
-2019.11.06
+2019.12.09
 
 ---
 
@@ -110,14 +108,16 @@ footer: Git/Gitlab Hands-on
 ###### 2. 用意するもの確認
 ###### 3. 1人でコードを管理してみる
 - init → add → commit
-- プロジェクトをつくってみる
 - 一個前までもどしてみる
-- remoteにpushする
+- プロジェクトをつくってみる
+- remoteに保存(push)する
 
-###### 4. 2人でコードを管理してみる(時間があれば)
+
+###### 4. 2人でコードを管理してみる(いつか時間があれば)
 - プロジェクトを作ってmemberを加えてみる
-- siritori.txtを共同編集する
+- 共同編集する
     
+
 ---
 
 <style scoped>
@@ -138,25 +138,34 @@ footer: Git/Gitlab Hands-on
 - ソースコードの変更履歴を記録・追跡するためのシステム
 - リーナス・トーバルズによって開発された(2005年)
 
-## ![image height:400px](./assets/gitlab_image.png)
+## ![image height:400px](./assets/gi2.png)
 
 ---
 
-# Gitを使うとこんないいことある
+## Gitを使うとこんないいことある
 
-- いい感じにバックアップできる
-    - PCがこわれてもなんとかなる
 - 「さっきまで動いてたのに」みたいな時にその時もどまでもどれる
-    - NASではバックアップはできるけどもどったりはできない(多分普通にやる分には)
-- PCが使えなくなっても、外部サーバーにあるデータからすぐに複製できる
+- `ゼミ資料ver1_最新(修正済み).pptx`みたいな命名から解放される
+
+## Gitlab(Github)を使うとこんないいことある
+
+- コードを外部サーバーに保存できる(手元のPCが壊れても大丈夫)
+- 複数人でいい感じに共同作業できる
 
 ---
+
+<style scoped>
+    table {
+        padding-top: 3%;
+        padding-bottom: 3%;
+    }
+</style>
 
 # Gitlabとは
 
-- Githubにインスパイアされて作られたgithubみたいなやつ
+- Githubにインスパイアされて作られたGithubみたいなやつ
 - 今研究室で使ってるのは `Gitlab CE` の方
-    - Windows PCがアプリケーションのサーバーになっていて、そのPCのフォルダにコードとかが保存されていく感じになってる
+    - Windows PCがアプリケーションのサーバーになっていて、そのPCのフォルダにコードとかが保存されていく感じ
 
 |種類|概要|
 |--|--|
@@ -167,9 +176,11 @@ footer: Git/Gitlab Hands-on
 
 # 1人でGit
 
-## 用意するもの
+## 用意するもの3つ
 
-#### 1. terminal (powershellとか)
+- terminal
+- powerpoint
+- Finder
 
 ##### COMMAND
 の次に書いてるコマンドを実行してください
@@ -178,17 +189,18 @@ footer: Git/Gitlab Hands-on
 
 # 1人でGit
 
-- ファイルを作ってgitで管理してみる
+- pptファイルをgitでバージョン管理してみる
 
 流れ
 
 ```
 0. フォルダ作る
-1. gitを初期化する
-2. ファイルを作成
-3. ファイルになんかする
-4. ファイルを管理対象にする
-5. その時点を保存する
+1. フォルダのgitを初期化する
+2. pptファイルを作成
+3. pptファイルを管理対象にする
+4. その時点を保存する
+
+5. 編集 → 保存 → 編集 → 保存
 ```
 
 ---
@@ -239,48 +251,25 @@ $ git init
 # 1人でGit
 
 ```
-2. ファイルを作成
+2. pptファイルを作成
 ```
 
-今のディレクトリに`README.md`を作成する
-
-##### COMMAND
-
-```
-$ touch README.md
-```
----
-
-<style scoped>
-    h2 {
-        text-align: center;
-        margin-top: 10px;
-    }
-</style>
-
-# 1人でGit
-
-```
-3. ファイルになんかする
-```
+今のディレクトリに`sample.pptx`を作成する
+1ページ目だけ、適当に作っておいてください
 
 ##### 作業
 
-- 何かしらのeditorでREADME.mdに何か書く
-
 ```
-$ vim README.md
+手元でパワーポイント開いて、今いるディレクトリに新規保存
 ```
-+ `a` + `何か書く` + `q` + `コロン(:)` + `wq`
-
-## ![vim height:150px](./assets/vim.png)
+- `gitlab_handson_sample/sample.pptx`
 
 ---
 
 # 1人でGit
 
 ```
-4. ファイルを管理対象にする
+3. pptファイルを管理対象にする
 ```
 
 管理するファイルに追加(add)するイメージ
@@ -288,7 +277,7 @@ $ vim README.md
 ##### COMMAND
 
 ```
-$ git add README.md
+$ git add sample.pptx
 ```
 
 ---
@@ -302,7 +291,7 @@ $ git add README.md
 # 1人でGit
 
 ```
-4. ファイルを管理対象にする
+3. pptファイルを管理対象にする
 ```
 
 状態を確認してみる
@@ -310,7 +299,7 @@ $ git add README.md
 $ git status
 ```
 
-## ![image height:250px](./assets/git-status.png)
+## ![image height:250px](./assets/gitstatus.png)
 
 
 ---
@@ -318,7 +307,7 @@ $ git status
 # 1人でGit
 
 ```
-5. その時点を保存する
+4. その時点を保存する
 ```
 
 その前にusernameとmailをなんとなく入力する(おそらくgitlabに登録した時のやつでok、違っても大丈夫そう)
@@ -329,51 +318,61 @@ $ git status
 $ git config --global user.name "<Your Name>"
 $ git config --global user.email <your-address@example.com"
 ```
+
+```
+$ git config --global user.name "kensuke"
+$ git config --global user.email sample@example.com
+```
+
 ---
+
+<style>
+    a {
+        font-size: 20px;
+        text-align: right;
+    }
+</style>
 
 # 1人でGit
 
 ```
-5. その時点を保存する
+4. その時点を保存する
 ```
 
 ##### COMMAND
 
+例)
 ```
-$ git commit -m "<なんの変更を加えたかのメモ>"
-```
-たとえば
-```
-$ git commit -m "[update] タイトルを追記した"
+$ git commit -m "[add] pptファイルを新規作成"
 ```
 
-## ![image](./assets/git-commit.png)
+## ![image](./assets/gitcommit.png)
+
+[Qiita:コミットメッセージの書き方](https://qiita.com/itosho/items/9565c6ad2ffc24c09364)
 
 ---
 
 # 1人でGit
 
-- ここまでで以下の`0~5`が完了
+- ここまでで以下の`0~4`が完了
 
 ```
 0. フォルダ作る
-1. gitを初期化する
-2. ファイルを作成
-3. ファイルになんかする
-4. ファイルを管理対象にする
-5. その時点を保存する
+1. フォルダのgitを初期化する
+2. pptファイルを作成
+3. pptファイルを管理対象にする
+4. その時点を保存する
 ```
 
-ここまで終わったら、作業するごとに`3~5`を繰り返していく感じ
+ここまで終わったら、`5`を繰り返していく感じ
 
 ```
-3. モデル作る処理を追加する
-4. `git add <file>`
-5. `git commit -m "<メッセージ>"
+5. 編集 → 保存 → 編集 → 保存
 ```
+
 ---
 
-- ちょっとやってみる
+少しやってみる
 
 ---
 <style scoped>
@@ -385,7 +384,7 @@ $ git commit -m "[update] タイトルを追記した"
 # 1人でGit
 
 ```
-3. モデル作る処理を追加する
+5.1 pptファイルに1ページ追加する
 ```
 
 やってみる
@@ -393,18 +392,17 @@ $ git commit -m "[update] タイトルを追記した"
 ##### 作業
 
 ```
-$ vim modeling.py
+1ページ追加
 ```
-+ `a` + `何か書く` + `q` + `コロン(:)` + `wq`
 
-## ![image height:150px](./assets/modeling.png)
+![image](./assets/gits.png)
 
 ---
 
 # 1人でGit
 
 ```
-4. `git add <file>`
+5.2 ファイルを管理対象に追加する
 ```
 
 やってみる
@@ -412,7 +410,7 @@ $ vim modeling.py
 ##### COMMAND
 
 ```
-$ git add modeling.py
+$ git add sample.pptx
 ```
 
 ---
@@ -420,7 +418,7 @@ $ git add modeling.py
 # 1人でGit
 
 ```
-5. `git commit -m "<メッセージ>"
+5.3 その時点を保存する
 ```
 
 やってみる
@@ -428,31 +426,31 @@ $ git add modeling.py
 ##### COMMAND
 
 ```
-git commit -m "[update] modeling"
+git commit -m "[update] ページ追加した"
 ```
 
-## ![image](./assets/modeling-commit.png)
+## ![image](./assets/gitcommit1.png)
 
 ---
 
-- さらに変更してみる
+さらに変更してみる
 
 ---
 
 # 1人でGit
 
 ```
-3. 予測する処理を加えてみる
+5.1 もう1ページ追加
 ```
 
-##### COMMAND
+##### 作業
 
 ```
-$ vim modeling.py
+さらに1ページ追加
 ```
-+ `a` + `何か書く` + `q` + `コロン(:)` + `wq`
 
-## ![image height:220px](./assets/prediction.png)
+## ![image](./assets/gits.png)
+
 
 ---
 
@@ -467,7 +465,7 @@ $ vim modeling.py
 ##### COMMAND
 
 ```
-$ git add modeling.py
+$ git add sample.pptx
 ```
 
 ---
@@ -481,7 +479,7 @@ $ git add modeling.py
 その時点を保存する
 
 ```
-$ git commit -m "[update] prediction"
+$ git commit -m "[update] もう1ページ追加した"
 ```
 
 ---
@@ -496,13 +494,13 @@ $ git commit -m "[update] prediction"
 
 以下の流れを繰り返してその時々の変更を保存していく
 
-## ![image](./assets/flow.png)
+## ![image](./assets/gi.png)
 
 ---
 
 # 1人でGit
 
-- 諸事情で、modelingの処理を追加したところまで戻りたくなった
+- 諸事情で、1ページ目追加したときまで戻りたくなった
 - 戻るための手順
 
 ```
@@ -512,6 +510,12 @@ $ git commit -m "[update] prediction"
 
 ---
 
+<style scoped>
+    h2 {
+        text-align: center;
+    }
+</style>
+
 # 1人でGit
 
 ```
@@ -519,8 +523,8 @@ $ git commit -m "[update] prediction"
 ```
 
 以下のcommandでcommit(ある時点)のハッシュが得られる
-予測のなんかを加えたcommitのハッシュは`63671c0`
-モデリングのなんかを加えた時のハッシュは`fbcb81f`
+最初のページを加えたcommitのハッシュは`09a32cb`
+さらにもう1ページ追加したcommitのハッシュは`4b766f5`
 
 ##### COMMAND
 
@@ -528,9 +532,17 @@ $ git commit -m "[update] prediction"
 $ git log --oneline
 ```
 
-## ![image](./assets/gitlog.png)
+## ![image](./assets/gitlog1.png)
 
 ---
+
+<style scoped>
+    h2 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+</style>
 
 # 1人でGit
 
@@ -543,33 +555,17 @@ $ git log --oneline
 ##### COMMAND
 
 ```
-$ git reset --hard fbcb81f
+$ git reset --hard 09a32cb
 ```
 
-## ![image](./assets/gitlog-after.png)
+## ![image](./assets/gitlog2.png)
 
----
-
-# 1人でGit
-
-```
-1. git reset でもどる
-```
-
-ハッシュを指定して戻る
-
-##### COMMAND
-
-```
-$ git reset --hard fbcb81f
-```
-## ![image  height:170px](./assets/gitlog-reset-result.png)
+- pptファイルをみると全部で2ページに戻ってる
 
 ---
 
 
-正直ここまでできれば、ローカルPCでバージョン管理はできてる
-
+ここまで理解できると、ローカルPCでバージョン管理できるようになる
 → ここから、リモートリポジトリにコードを保存してみる
 
 ---
@@ -603,16 +599,199 @@ $ git reset --hard fbcb81f
 
 ---
 
-# 1人でGit まとめ
+<style scoped>
+    h2 {
+        text-align: center;
+    }
+</style>
 
-- 作業 → `git add` → `git commit` のサイクルを続ける
-- 区切りがきたら、`git push origin master`でリモートに保存
-- 上の作業をしながら分析・開発すると、以下のメリットがある
-    - PCが壊れてもバックアップできる
-    - ある時点まで戻れる
-    
+# 1人でGit
+
+```
+0. プロジェクトを作成する
+```
+- その前に登録
+
+## ![image height:350px](./assets/gitlab1.png)
+
+
+---
+
+<style scoped>
+    h2 {
+        text-align: center;
+    }
+</style>
+
+# 1人でGit
+
+```
+0. プロジェクトを作成する
+```
+- `project name`はフォルダの名前で
+
+## ![image height:350px](./assets/gl2.png)
+
+---
+
+# 1人でGit
+
+```
+1. リモートリポジトリを登録する
+```
+##### COMMAND
+
+```
+$ git remote add origin http://192.168.100.4:10080/<user-name>/<project-name>.git
+```
+例)
+![image](./assets/gitremote.png)
+
+---
+
+# 1人でGit
+
+```
+2. リモートにコードを保存する(push)
+```
+
+##### COMMAND
+
+```
+$ git push -u origin master
+```
+
+![image](./assets/gitremote2.png)
+
+
+---
+
+<style scoped>
+    h2 {
+        text-align: center;
+    }
+</style>
+
+# 1人でGit
+
+```
+2. リモートにコードを保存する(push)
+```
+- リモートサーバーにコードが保存される
+
+## ![image height:300px](./assets/gitremote3.png)
+
+
+---
+
+<style scoped>
+    h2 {
+        text-align: center;
+    }
+</style>
+
+# 1人でGit
+
+- 区切りのいいところでremoteにpushして保存していく
+
+## ![image height:400px](./assets/glimage.png)
+
+
 ---
 
 # 2人でGit
 
-- ここまでやるかは未定
+- またいつか
+
+---
+
+# 1人でGit まとめ
+
+- 作業 → `git add` → `git commit` のサイクルを続ける
+- 区切りがきたら、`git push origin master`でリモートにpush
+- 上の作業をしながら分析・開発すると、¥
+    - PCが壊れてもバックアップできる
+    - ある時点まで戻れる
+        - `filename_最新版ver1(確認済み).pptx` とかから解放される
+    
+---
+
+ここから参考資料
+
+---
+
+<style scoped>
+    table {
+        width: 100%;
+        padding: 0;
+        align: center;
+    }
+    th, td {
+        width: 50%;
+    }
+</style>
+
+# よく使うコマンドまとめ
+
+### ファイル操作関連 その1
+
+|command|用途|
+|--|--|
+|`ls <folder-name>`|フォルダの中にあるものを表示|
+|`ls -l`|今のディレクトリにあるものを縦に表示(見やすい)|
+|`cd <folder-name>`|フォルダまで移動|
+|`cd ..`|1つ下の階層まで移動|
+|`cd ../..`|2つ下の階層まで移動|
+|`mkdir <folder-name>`|フォルダを作成|
+
+- terminalでは、`.`は今の位置、`..`は一個前
+
+---
+
+<style scoped>
+    table {
+        width: 100%;
+        padding: 0;
+    }
+    th, td {
+        width: 50%;
+    }
+</style>
+
+# よく使うコマンドまとめ
+
+### ファイル操作関連 その2
+
+|command|用途|
+|--|--|
+|`touch <file-name>`|ファイルを作成|
+|`rm <file-name>`|ファイルを削除|
+|`rm -r <filder-name>`|フォルダを削除|
+
+
+---
+
+<style scoped>
+    table {
+        width: 100%;
+        padding: 0;
+        margin-top: 0;
+    }
+    th, td {
+        width: 50%;
+    }
+</style>
+
+# よく使うコマンドまとめ
+
+### git 関連
+
+|command|用途|
+|--|--|
+|`git init`|フォルダのgit repositoryを初期化する|
+|`git add <file-name>`|ファイルをgit管理下に追加する|
+|`git add .`|今のディレクトリにある全部を管理下にする|
+|`git commit -m "<message>"`|その時点を保存する|
+|`git log --oneline`|commitログを表示する|
+|`git reset -hard <commit-id>`|commit idの時点まで戻る|
+|`git reset -soft <commit-id>`|commitする前まで戻る(変更自体は消えない)|
